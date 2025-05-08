@@ -20,6 +20,27 @@ const inventory = [
       avg_daily_sales: 10,
       last_restocked_date: "2025-04-18",
     },
+    {
+      item_name: "Monitor",
+      current_stock: 10,
+      reorder_level: 10,
+      avg_daily_sales: 2,
+      last_restocked_date: "2025-05-01"
+    },
+    {
+        item_name: "Mouse Pad",
+        current_stock: 100,
+        reorder_level: 40,
+        avg_daily_sales: 5,
+        last_restocked_date: "2025-02-11"
+      },
+    {
+        item_name: "Desk Lamp",
+        current_stock: 80,
+        reorder_level: 25,
+        avg_daily_sales: 2,
+        last_restocked_date: "2025-01-21"
+      },
   ];
   
   export default inventory;

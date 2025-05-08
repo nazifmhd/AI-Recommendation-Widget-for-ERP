@@ -1,3 +1,4 @@
+/* Global Styles for Light and Dark Mode */
 body.light {
   background-color: #f4f4f4;
   color: #222;
@@ -8,11 +9,7 @@ body.dark {
   color: #f0f0f0;
 }
 
-.App {
-  text-align: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
+/* Button Styles */
 button {
   padding: 8px 12px;
   font-size: 14px;
@@ -30,15 +27,28 @@ body.dark button {
   border: 1px solid #777;
 }
 
+/* App Container Animations */
+.App {
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -54,13 +64,4 @@ body.dark button {
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
