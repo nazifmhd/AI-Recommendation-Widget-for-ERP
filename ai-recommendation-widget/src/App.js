@@ -11,14 +11,14 @@ import "./App.css";
 
 // Themes
 const lightTheme = {
-  body: "#f4f4f4",
+  body: "linear-gradient(to bottom right, #f8f9fa, #e9ecef)",
   text: "#222",
   buttonBg: "#007bff",
   buttonText: "#fff",
 };
 
 const darkTheme = {
-  body: "#1e1e1e",
+  body: "linear-gradient(to bottom right, #121212, #1e1e1e)",
   text: "#f0f0f0",
   buttonBg: "#333",
   buttonText: "#f0f0f0",
@@ -26,9 +26,12 @@ const darkTheme = {
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${({ theme }) => theme.body};
+    background: ${({ theme }) => theme.body};
+    background-attachment: fixed;
     color: ${({ theme }) => theme.text};
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: color 0.3s ease;
+    min-height: 100vh;
+    margin: 0;
   }
   button {
     background-color: ${({ theme }) => theme.buttonBg};
