@@ -21,4 +21,14 @@
     border-radius: 6px;
     font-size: 16px;
   }
-  
+  /* RecommendationWidget.css */
+  .recommendation-item.critical {
+    color: red;
+    font-weight: bold;
+  }
+  .recommendation-item.warning {
+    color: orange;
+  }
+  .recommendation-item.info {
+    color: #444;
+  }

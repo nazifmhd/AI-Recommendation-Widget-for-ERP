@@ -9,15 +9,15 @@ const EditableInventory = ({ inventory, setInventory }) => {
   };
 
   return (
-    <div style={{ marginTop: "40px" }}>
+    <div style={{ marginTop: "40px", overflowX: "auto" }}>
       <h3>🛠️ Editable Inventory</h3>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
+      <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "600px" }}>
+        <thead style={{ backgroundColor: "#f0f0f0" }}>
           <tr>
             <th>Item Name</th>
             <th>Current Stock</th>
             <th>Reorder Level</th>
-            <th>Avg Daily Sales</th>
+            <th>Avg. Daily Sales</th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +29,13 @@ const EditableInventory = ({ inventory, setInventory }) => {
                     type={field === "item_name" ? "text" : "number"}
                     value={item[field]}
                     onChange={(e) => handleChange(index, field, e.target.value)}
-                    style={{ width: "100%", padding: "5px" }}
+                    aria-label={`${field} for ${item.item_name}`}
+                    style={{
+                      width: "100%",
+                      padding: "6px",
+                      border: "1px solid #ccc",
+                      borderRadius: "4px",
+                    }}
                   />
                 </td>
               ))}

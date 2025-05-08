@@ -1,7 +1,8 @@
-// Required dependencies: npm install react-toggle styled-components
+// Required dependencies: npm install react-toggle styled-components axios
 import React, { useState, useEffect } from "react";
 import Toggle from "react-toggle";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import axios from "axios"; // ✅ NEW: To send request to your backend
 import "react-toggle/style.css";
 import RecommendationWidget from "./components/RecommendationWidget";
 import InventoryChart from "./components/InventoryChart";
@@ -41,7 +42,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// Fade-in animation for the app
 const fadeIn = `
   opacity: 0;
   animation: fadeIn 0.6s ease forwards;
@@ -124,6 +124,17 @@ function App() {
     setTheme(prev => (prev === "light" ? "dark" : "light"));
   };
 
+  // ✅ NEW: Function to call backend GPT API
+  const getGPTRecommendation = async (prompt) => {
+    try {
+      const res = await axios.post("http://localhost:5000/api/gpt", { prompt });
+      return res.data.message;
+    } catch (err) {
+      console.error("GPT error:", err);
+      return "Sorry, I couldn't generate a recommendation.";
+    }
+  };
+
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyle />
@@ -147,7 +158,8 @@ function App() {
           <InventoryChart inventory={inventory} />
         </FadeInSection>
         <FadeInSection>
-          <RecommendationWidget inventory={inventory} />
+          {/* ✅ Pass GPT handler as prop */}
+          <RecommendationWidget inventory={inventory} getRecommendation={getGPTRecommendation} />
         </FadeInSection>
         <FadeInSection>
           <EditableInventory inventory={inventory} setInventory={setInventory} />
