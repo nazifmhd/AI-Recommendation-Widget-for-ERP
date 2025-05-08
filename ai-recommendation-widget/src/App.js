@@ -1,4 +1,3 @@
-// Required dependencies: npm install react-toggle styled-components axios
 import React, { useState, useEffect } from "react";
 import Toggle from "react-toggle";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
@@ -72,7 +71,16 @@ const FadeInSection = styled.div`
   ${fadeUp}
 `;
 
+// Add title styling
+const PageTitle = styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  ${fadeIn}
+`;
+
 // CSV Export
+// ...existing code...
 const exportCSV = (data) => {
   const csvRows = [];
   const headers = Object.keys(data[0]);
@@ -139,6 +147,9 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyle />
       <FadeInAppContainer className="App" style={{ padding: "20px" }}>
+
+      <PageTitle>AI Recommendation Widget for ERP</PageTitle>
+      
         <ToggleContainer>
           <button onClick={handleReset}>🔄 Reset Inventory</button>
           <button onClick={() => exportCSV(inventory)}>📤 Export to CSV</button>
